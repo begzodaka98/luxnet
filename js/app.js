@@ -912,7 +912,7 @@ async function handleCheckout(event) {
   }).join('\n');
 
   const orderMessage = 
-`⚡️ НОВЫЙ ЗАКАЗ С САЙТА NETCOM:
+`⚡️ НОВЫЙ ЗАКАЗ С САЙТА LUXNET:
 --------------------------------
 👤 Клиент: ${name}
 📞 Телефон: ${phone}
@@ -1258,3 +1258,4 @@ function setupEventListeners() {
     });
   }
 }
+
