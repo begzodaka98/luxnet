@@ -19,7 +19,7 @@ const CONFIG = {
   usdRate: 12850,  
 
  
-  googleSheetId: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms", 
+  googleSheetId: "1QuPHtTYS5Dvz6PgBMEZjFikAUqwq7AoQ2cTnYAzxExw", 
   googleSheetName: "Товары",
 
   // TELEGRAM БОТ ДЛЯ ЗАКАЗОВ (Опционально):
