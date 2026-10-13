@@ -20,7 +20,7 @@ const CONFIG = {
 
   
   googleSheetId: "1QuPHtTYS5Dvz6PgBMEZjFikAUqwq7AoQ2cTnYAzxExw", 
-  googleSheetName: "Товары"
+  googleSheetName: "Товары",
 
  
   telegramBotToken: "",
