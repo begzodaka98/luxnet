@@ -22,7 +22,7 @@ const CONFIG = {
 
   // GOOGLE SHEETS ИНТЕГРАЦИЯ:
   // ID таблицы можно указать здесь или в закрытой админ-панели (он сохранится в браузере)
-  googleSheetId: "", // Например: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms"
+  googleSheetId: "1QuPHtTYS5Dvz6PgBMEZjFikAUqwq7AoQ2cTnYAzxExw", // Например: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms"
   googleSheetName: "Товары", // Название вкладки таблицы
 
   // TELEGRAM БОТ ДЛЯ ЗАКАЗОВ (Опционально):
