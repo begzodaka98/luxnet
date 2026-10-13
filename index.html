@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NETCOM — Каталог сетевого оборудования | TP-Link, Mercusys, MikroTik</title>
+  <meta name="description" content="Официальный каталог сетевого оборудования: роутеры Wi-Fi 6 и Wi-Fi 7, Mesh-системы, коммутаторы, точки доступа MikroTik, TP-Link, Mercusys в Ташкенте.">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ВЕРХНЯЯ ИНФО-ПОЛОСА -->
+  <aside class="top-announcement" aria-label="Информация о доставке">
+    <div class="container announcement-content">
+      <div class="announcement-item">
+        <i class="fa-solid fa-truck-fast"></i> Быстрая доставка по Ташкенту и всем регионам Узбекистана
+      </div>
+      <div class="announcement-actions">
+        <a href="tel:+998901234567" id="topPhoneLink" class="announcement-link">
+          <i class="fa-solid fa-phone"></i> <span id="topPhone">+998 90 123 45 67</span>
+        </a>
+        <a href="https://t.me/jbnmedia" target="_blank" id="topTgLink" class="announcement-link">
+          <i class="fa-brands fa-telegram"></i> Telegram Консультант
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ШАПКА САЙТА (HEADER) -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Логотип -->
+      <a href="#" class="brand-logo" onclick="resetFilters(); return false;">
+        <div class="logo-icon">
+          <i class="fa-solid fa-network-wired"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title" id="headerStoreName">LUXNET</span>
+          <span class="logo-subtitle">NETWORK SOLUTIONS</span>
+        </div>
+      </a>
+
+      <!-- Поисковая строка -->
+      <div class="header-search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Поиск роутеров, коммутаторов, моделей (напр. AX55, hEX S, Omada)...">
+        <button id="clearSearchBtn" class="clear-search-btn" title="Очистить поиск"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Действия: Валюта, Корзина, Админ (если авторизован) -->
+      <div class="header-actions">
+        <!-- Кнопка админа (ВИДНА ТОЛЬКО ПОСЛЕ АВТОРИЗАЦИИ АДМИНИСТРАТОРА) -->
+        <button class="action-btn admin-header-btn" id="adminHeaderBtn" style="display: none;" onclick="openSettingsModal()" title="Панель администратора">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Админ-панель</span>
+        </button>
+
+        <!-- Переключатель валюты -->
+        <button class="action-btn currency-toggle-btn" id="currencyToggleBtn" title="Сменить валюту (UZS / USD)">
+          <i class="fa-solid fa-coins"></i>
+          <span id="currencyLabel">UZS (сум)</span>
+        </button>
+
+        <!-- Корзина -->
+        <button class="action-btn cart-btn" id="openCartBtn" title="Открыть корзину">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-label">Корзина</span>
+          <span class="cart-count-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ГЕРОЙ-БАННЕР (HERO SECTION) -->
+  <section class="hero-banner">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-chip">
+          <i class="fa-solid fa-bolt"></i> 100% Оригинальное оборудование
+        </div>
+        <h1 class="hero-title">Профессиональное сетевое оборудование для дома и бизнеса</h1>
+        <p class="hero-desc">Официальная гарантия, консультации сертифицированных специалистов, оптовые и розничные поставки роутеров, Mesh-систем, коммутаторов и оптики.</p>
+        
+        <div class="hero-brands-row">
+          <span class="brand-badge-item" onclick="filterByBrand('TP-Link')"><i class="fa-solid fa-wifi"></i> TP-Link</span>
+          <span class="brand-badge-item" onclick="filterByBrand('Mercusys')"><i class="fa-solid fa-tower-broadcast"></i> Mercusys</span>
+          <span class="brand-badge-item" onclick="filterByBrand('MikroTik')"><i class="fa-solid fa-server"></i> MikroTik</span>
+          <span class="brand-badge-item" onclick="filterByCategory('Mesh-системы')"><i class="fa-solid fa-circle-nodes"></i> Mesh Wi-Fi 6</span>
+        </div>
+      </div>
+
+      <!-- Блок преимуществ для клиентов (вместо технических настроек) -->
+      <div class="hero-trust-card">
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="trust-info">
+            <span class="trust-title">Официальная гарантия</span>
+            <span class="trust-desc">Сервисная поддержка от 1 года на всю технику</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <div class="trust-info">
+            <span class="trust-title">Быстрая доставка</span>
+            <span class="trust-desc">По Ташкенту день в день, по РУз через СДЭК/BTS</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <div class="trust-info">
+            <span class="trust-title">Оплата юрлицам</span>
+            <span class="trust-desc">Перечисление с НДС, договоры, Click и Payme</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ: ФИЛЬТРЫ И КАТАЛОГ -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Панель категорий (Табы) -->
+      <div class="categories-scroll-wrapper">
+        <nav class="categories-nav" id="categoriesNav">
+          <button class="category-pill active" data-category="ALL">
+            <i class="fa-solid fa-border-all"></i> Все товары
+          </button>
+          <button class="category-pill" data-category="Wi-Fi Роутеры">
+            <i class="fa-solid fa-wifi"></i> Wi-Fi Роутеры
+          </button>
+          <button class="category-pill" data-category="Wi-Fi 7">
+            <i class="fa-solid fa-bolt-lightning"></i> Wi-Fi 7
+          </button>
+          <button class="category-pill" data-category="Mesh-системы">
+            <i class="fa-solid fa-circle-nodes"></i> Mesh-системы
+          </button>
+          <button class="category-pill" data-category="Коммутаторы">
+            <i class="fa-solid fa-network-wired"></i> Коммутаторы (Switches)
+          </button>
+          <button class="category-pill" data-category="Точки доступа">
+            <i class="fa-solid fa-tower-broadcast"></i> Точки доступа
+          </button>
+          <button class="category-pill" data-category="Маршрутизаторы MikroTik">
+            <i class="fa-solid fa-server"></i> MikroTik RouterOS
+          </button>
+          <button class="category-pill" data-category="Оптика & SFP">
+            <i class="fa-solid fa-microchip"></i> Оптика & SFP
+          </button>
+        </nav>
+      </div>
+
+      <!-- Вторичная панель: Фильтры брендов и Сортировка -->
+      <div class="filters-bar">
+        <!-- Бренды -->
+        <div class="brand-filters" id="brandFilters">
+          <span class="filter-label">Бренд:</span>
+          <button class="brand-btn active" data-brand="ALL">Все</button>
+          <button class="brand-btn" data-brand="TP-Link">TP-Link</button>
+          <button class="brand-btn" data-brand="Mercusys">Mercusys</button>
+          <button class="brand-btn" data-brand="MikroTik">MikroTik</button>
+        </div>
+
+        <!-- Сортировка и статистика -->
+        <div class="sort-and-meta">
+          <span class="products-counter" id="productsCount">Найдено: 0 товаров</span>
+          
+          <div class="sort-selector">
+            <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i></label>
+            <select id="sortSelect">
+              <option value="popular">По популярности</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="name-asc">По названию (А-Я)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- СЕТКА ТОВАРОВ (PRODUCT GRID) -->
+      <div class="products-grid" id="productsGrid">
+        <div class="loading-state">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <p>Загрузка каталога сетевого оборудования...</p>
+        </div>
+      </div>
+
+      <!-- Сообщение, если ничего не найдено -->
+      <div class="no-results-state" id="noResults" style="display: none;">
+        <i class="fa-solid fa-box-open empty-icon"></i>
+        <h3>Ничего не найдено</h3>
+        <p>Попробуйте изменить поисковый запрос или сбросить фильтры.</p>
+        <button class="reset-filters-btn" onclick="resetFilters()">
+          <i class="fa-solid fa-rotate-left"></i> Сбросить все фильтры
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- МОДАЛЬНОЕ ОКНО ДЕТАЛЕЙ ТОВАРА -->
+  <div class="modal-overlay" id="productModalOverlay">
+    <div class="modal-content product-detail-modal">
+      <button class="modal-close-btn" id="closeProductModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body product-modal-layout" id="productModalBody"></div>
+    </div>
+  </div>
+
+  <!-- БОКОВОЕ ОКНО / СЛАЙДЕР КОРЗИНЫ (CART DRAWER) -->
+  <div class="cart-drawer-overlay" id="cartOverlay">
+    <div class="cart-drawer" id="cartDrawer">
+      
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Корзина заказов</span>
+          <span class="cart-items-tag" id="drawerCartCount">0</span>
+        </div>
+        <button class="cart-close-btn" id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="cart-drawer-items" id="cartItemsList">
+        <div class="empty-cart-state">
+          <i class="fa-solid fa-cart-plus"></i>
+          <p>Ваша корзина пуста</p>
+          <span>Выберите сетевое оборудование из каталога выше</span>
+        </div>
+      </div>
+
+      <div class="cart-drawer-footer" id="cartFooter" style="display: none;">
+        <div class="cart-summary-row">
+          <span>Сумма заказа:</span>
+          <span class="cart-summary-total" id="cartTotalPrice">0 сум</span>
+        </div>
+
+        <form class="checkout-form" id="checkoutForm" onsubmit="handleCheckout(event)">
+          <div class="form-title"><i class="fa-solid fa-user-check"></i> Данные получателя</div>
+          
+          <div class="form-group">
+            <input type="text" id="orderName" required placeholder="Ваше имя / Компания *">
+          </div>
+
+          <div class="form-group">
+            <input type="tel" id="orderPhone" required placeholder="Номер телефона (+998...) *" value="+998 ">
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="orderTelegram" placeholder="Telegram username (@nik) или адрес доставки">
+          </div>
+
+          <div class="form-group">
+            <select id="orderPayment">
+              <option value="cash">Оплата при получении (Наличные)</option>
+              <option value="card">Перевод / Click / Payme</option>
+              <option value="bank">Перечисление для юрлиц с НДС (Счет-фактура)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-order-btn telegram-order-btn">
+            <i class="fa-brands fa-telegram"></i> Отправить заказ в Telegram
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- СКРЫТОЕ МОДАЛЬНОЕ ОКНО: АВТОРИЗАЦИЯ АДМИНИСТРАТОРА -->
+  <div class="modal-overlay" id="adminLoginModalOverlay">
+    <div class="modal-content admin-login-modal">
+      <button class="modal-close-btn" id="closeAdminLoginBtn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-header">
+        <div class="admin-modal-icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Вход в панель управления</h3>
+        <p class="admin-modal-subtitle">Только для администраторов интернет-магазина</p>
+      </div>
+
+      <form class="admin-login-form" onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="adminPasswordInput">Пароль администратора:</label>
+          <input type="password" id="adminPasswordInput" required placeholder="Введите пароль админа..." autocomplete="current-password">
+        </div>
+
+        <div id="adminLoginError" class="admin-error-text" style="display: none;">
+          <i class="fa-solid fa-triangle-exclamation"></i> Неверный пароль!
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 14px;">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Войти
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- СКРЫТОЕ МОДАЛЬНОЕ ОКНО: ЗАКРЫТАЯ АДМИН-ПАНЕЛЬ GOOGLE SHEETS -->
+  <div class="modal-overlay" id="settingsModalOverlay">
+    <div class="modal-content settings-modal">
+      <button class="modal-close-btn" id="closeSettingsModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-header">
+        <div class="admin-modal-icon"><i class="fa-solid fa-sliders"></i></div>
+        <div>
+          <h3>Панель администратора</h3>
+          <span class="admin-modal-subtitle">Синхронизация с Google Таблицей</span>
+        </div>
+      </div>
+
+      <div class="modal-body settings-body">
+        
+        <!-- Статус подключения -->
+        <div class="admin-status-box" id="adminStatusBox">
+          <div class="source-indicator active" id="adminSourceIndicator"></div>
+          <div>
+            <div style="font-size:12px; color:var(--text-dim); font-weight:700;">ТЕКУЩИЙ ИСТОЧНИК:</div>
+            <div id="adminSourceDetail" style="font-weight:700; color:#38bdf8;">Загрузка...</div>
+          </div>
+          <button class="admin-quick-btn" onclick="loadCatalogData(true)" title="Принудительно обновить прямо сейчас">
+            <i class="fa-solid fa-arrows-rotate" id="adminSyncIcon"></i> Обновить
+          </button>
+        </div>
+
+        <div class="setting-field">
+          <label for="settingsSheetId"><b>ID вашей Google Таблицы:</b></label>
+          <input type="text" id="settingsSheetId" placeholder="Например: 1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms">
+          <small>ID находится в ссылке между <code>/d/</code> и <code>/edit</code>.</small>
+        </div>
+
+        <div class="setting-field">
+          <label for="settingsSheetName"><b>Имя листа (вкладки):</b></label>
+          <input type="text" id="settingsSheetName" placeholder="Товары" value="Товары">
+        </div>
+
+        <div class="setting-field">
+          <label for="settingsUsdRate"><b>Курс доллара (USD к сум):</b></label>
+          <input type="number" id="settingsUsdRate" placeholder="12850" value="12850">
+        </div>
+
+        <div class="admin-links-row" id="adminSheetLinkRow" style="margin-bottom: 16px; display: none;">
+          <a href="#" target="_blank" id="openExternalSheetLink" class="admin-external-link">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Открыть Google Таблицу для редактирования
+          </a>
+        </div>
+
+        <div class="instructions-accordion">
+          <details>
+            <summary><i class="fa-solid fa-circle-question"></i> Памятка по доступу к Google Таблице</summary>
+            <ol>
+              <li>В вашей Google Таблице нажмите <b>«Поделиться»</b> в верхнем правом углу.</li>
+              <li>Выберите <b>«Все, у кого есть ссылка» -> «Читатель»</b>.</li>
+              <li>Скопируйте ID таблицы и вставьте в поле выше.</li>
+              <li>Для редактирования товаров открывайте саму Google Таблицу, а на сайте нажимайте «Обновить».</li>
+            </ol>
+          </details>
+        </div>
+
+        <div class="settings-actions">
+          <button class="btn-primary" id="saveSettingsBtn">
+            <i class="fa-solid fa-floppy-disk"></i> Сохранить настройки
+          </button>
+          <button class="btn-secondary" id="resetToDefaultBtn" title="Вернуться к демо-товарам">
+            Демо-база
+          </button>
+          <button class="btn-danger-logout" onclick="logoutAdmin()" title="Выйти из админки">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ФУТЕР САЙТА ДЛЯ КЛИЕНТОВ -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <div class="logo-text">
+          <span class="logo-title" id="footerStoreName">NETCOM</span>
+          <span class="logo-subtitle">Сетевые решения в Узбекистане</span>
+        </div>
+        <p class="footer-desc">
+          Официальные поставки оборудования TP-Link, Mercusys, MikroTik. Сертифицированная продукция, гарантия, настройка и монтаж сетей под ключ.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Категории</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="filterByCategory('Wi-Fi Роутеры'); return false;">Роутеры Wi-Fi 6 и 7</a></li>
+          <li><a href="#" onclick="filterByCategory('Mesh-системы'); return false;">Бесшовные Mesh-системы</a></li>
+          <li><a href="#" onclick="filterByCategory('Коммутаторы'); return false;">Свитчи и PoE коммутаторы</a></li>
+          <li><a href="#" onclick="filterByCategory('Маршрутизаторы MikroTik'); return false;">Оборудование MikroTik</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Контакты и склад</h4>
+        <ul class="footer-contacts">
+          <li><i class="fa-solid fa-location-dot"></i> <span id="footerAddress">г. Ташкент, ТЦ Малика / Юнусабад</span></li>
+          <li><i class="fa-solid fa-phone"></i> <a href="tel:+998901234567" id="footerPhone">+998 90 123 45 67</a></li>
+          <li><i class="fa-brands fa-telegram"></i> <a href="https://t.me/jbnmedia" target="_blank" id="footerTg">@jbnmedia</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>График работы</h4>
+        <ul class="footer-contacts">
+          <li><i class="fa-solid fa-clock"></i> Пн — Сб: 09:00 – 19:00</li>
+          <li><i class="fa-solid fa-calendar-check"></i> Воскресенье: 10:00 – 17:00</li>
+          <li><i class="fa-solid fa-headset"></i> Поддержка в Telegram: 24/7</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <!-- Секретный триггер для админа: 3 быстрых клика по копирайту открывают админку -->
+        <span id="adminSecretTrigger" class="secret-trigger">© 2026 NETCOM. Все права защищены.</span>
+        <span>Официальный дистрибьютор сетевых технологий</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- СКРИПТЫ -->
+  <script src="config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
