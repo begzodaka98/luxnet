@@ -12,7 +12,7 @@ const CONFIG = {
   address: "г. Ташкент, ТЦ Малика / Юнусабад",
 
   
-  adminPassword: "admin1111", 
+  adminPassword: "admin11111", 
 
   // Валюта и курс
   currency: "UZS", // UZS или USD
